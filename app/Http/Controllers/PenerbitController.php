@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Penerbit;
+use App\Models\Buku;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 
@@ -122,10 +123,12 @@ class PenerbitController extends Controller
     public function pengadaan()
     {
 
-    $data = DB::table('buku')
-            ->orderBy('buku.stok', 'asc')
-            ->first();
-
-        return view('dashboard', compact('data'));
+        $data = DB::table('buku')
+        ->select('buku.id', 'buku.nama_buku', 'buku.stok', 'penerbit.nama')
+        ->join('penerbit', 'buku.penerbit_id', '=', 'penerbit.id')
+        ->orderBy('buku.stok', 'asc')
+        ->first();
+    
+    return view('pengadaan', compact('data'));
     }
 }
