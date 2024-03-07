@@ -17,13 +17,6 @@ class PenerbitController extends Controller
     }
     public function index()
     {
-        // $data = DB::table('buku')
-        //     ->select('buku.nama_buku', 'penerbit.nama_penerbit')
-        //     ->join('penerbit', 'buku.penerbit_id', '=', 'penerbit.id')
-        //     ->orderBy('buku.stok', 'asc')
-        //     ->first();
-
-        // return view('dashboard', compact('data'));
 
         $data = Penerbit::all();
 
@@ -125,5 +118,15 @@ class PenerbitController extends Controller
         Alert::success('Successfull', 'Data Berhasil di Hapus');
         // redirect
         return redirect()->route('admin.penerbit');
+    }
+    public function pengadaan()
+    {
+
+    $data = DB::table('buku')
+            ->select('buku.nama_buku', 'penerbit.nama_penerbit')
+            ->orderBy('buku.stok', 'asc')
+            ->first();
+
+        return view('dashboard', compact('data'));
     }
 }

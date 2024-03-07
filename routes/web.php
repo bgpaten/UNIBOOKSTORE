@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/penerbit/edit/{id}', [PenerbitController::class, 'edit'])->name('penerbit.edit');
     Route::put('/penerbit/update/{id}', [PenerbitController::class, 'update'])->name('penerbit.update');
 
-    Route::get('/pengadaan', [PenerbitController::class, 'indexadmin'])->name('pengadaan');
+    Route::get('/pengadaan', [PenerbitController::class, 'pengadaan'])->name('pengadaan');
 
 
 });
