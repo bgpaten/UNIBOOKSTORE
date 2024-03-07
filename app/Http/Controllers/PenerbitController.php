@@ -123,7 +123,6 @@ class PenerbitController extends Controller
     {
 
     $data = DB::table('buku')
-            ->select('buku.nama_buku', 'penerbit.nama_penerbit')
             ->orderBy('buku.stok', 'asc')
             ->first();
 

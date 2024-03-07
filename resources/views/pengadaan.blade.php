@@ -12,7 +12,7 @@
         <div class="navbar-nav align-items-center float-end mb-4">
                 <div class="nav-item d-flex align-items-center">
                     <div class="mb-3 mt-3 ">
-                        <a href="{{ route('penerbit.create') }}"><button class="btn btn-primary" type="submit">Tambah Penerbit <i class="bx bx-plus"></i></button></a>
+                        <a href="{{ route('buku.create') }}"><button class="btn btn-primary" type="submit">Tambah Buku <i class="bx bx-plus"></i></button></a>
                     </div>
                 </div>
         </div>
@@ -20,8 +20,12 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Kode</th>
+                    <th>Kategori</th>
                     <th>Nama Buku</th>
-                    <th>Nama Penerbit</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Penerbit</th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,7 +38,7 @@
                         <div class="modal-dialog " role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="{{ 'id' . $item->id }}">Data {{ $item->nama }}</h5>
+                                    <h5 class="modal-title" id="{{ 'id' . $item->id }}">Data {{ $item->nama_buku }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -42,8 +46,12 @@
                                     <div class="col-4">
                                         <p>
                                         <ul>
-                                            <li> Nama Buku : {{ $item->nama_buku }}</li>
-                                            <li>Nama Penerbit : {{ $item->nama_penerbit }}</li>
+                                            <li> Kode : {{ $item->kode }}</li>
+                                            <li>Kategori : {{ $item->kategori }}</li>
+                                            <li>Nama Buku : {{ $item->nama_buku }}</li>
+                                            <li>Harga : {{ $item->harga }}</li>
+                                            <li>Stok : {{ $item->stok }}</li>
+                                            <li>{{ $item->penerbit->nama }}</li>
                                         </ul>
                                         </p>
 
@@ -60,15 +68,19 @@
                     </div>
                     <tr>
                         <td> <strong>{{ $no++ }}</strong></td>
+                        <td>{{ $item->kode }}</td>
+                        <td>{{ $item->kategori }}</td>
                         <td>{{ $item->nama_buku }}</td>
-                        <td>{{ $item->nama_penerbit }}</td>
+                        <td>{{ $item->harga }}</td>
+                        <td>{{ $item->stok }}</td>
+                        <td>{{ $item->penerbit->nama }}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('penerbit.edit', $item->id) }}"><i
+                                    <a class="dropdown-item" href="{{ route('buku.edit', $item->id) }}"><i
                                             class="bx bx-edit-alt me-1"></i> Edit</a>
                                     {{-- <button
                 type="button"
@@ -80,7 +92,7 @@
                                     <button class="dropdown-item" data-bs-toggle="modal"
                                         data-bs-target="{{ '#id' . $item->id }}"><i
                                             class="bx bx-pencil me-1"></i>Detail</button>
-                                    <form action="{{ route('penerbit.destroy', $item->id) }}" method="GET">
+                                    <form action="{{ route('buku.destroy', $item->id) }}" method="GET">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="dropdown-item"
