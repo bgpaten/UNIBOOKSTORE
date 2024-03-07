@@ -3,20 +3,11 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Manage Buku </li>
+            <li class="breadcrumb-item active" aria-current="page">Manage Stok Sikit </li>
         </ol>
     </nav>
 @endsection
 @section('konten')
-    <div class="table-responsive text-nowrap">
-        <div class="navbar-nav align-items-center float-end mb-4">
-            <div class="nav-item d-flex align-items-center">
-                <div class="mb-3 mt-3 ">
-                    <a href="{{ route('buku.create') }}"><button class="btn btn-primary" type="submit">Tambah Buku <i
-                                class="bx bx-plus"></i></button></a>
-                </div>
-            </div>
-        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
